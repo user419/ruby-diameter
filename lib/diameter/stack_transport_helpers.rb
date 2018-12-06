@@ -25,7 +25,12 @@ module Diameter
       def start_main_loop
         @loop_thread = Thread.new do
           loop do
-            main_loop
+            begin
+              main_loop
+            rescue Errno::ECONNRESET => e
+              Diameter.logger.warn('The remote host reset the connection request. Retrying.')
+              sleep 5
+            end
           end
         end
         @loop_thread.abort_on_exception = true

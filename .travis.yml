@@ -1,10 +1,11 @@
 language: ruby
 rvm:
-  - "1.9.3"
-  - "2.0.0"
-  - "2.1.1"
-  - rbx-2
-  - jruby-19mode
+  - "2.4.1"
+#  - "1.9.3"
+#  - "2.0.0"
+#  - "2.1.1"
+#  - rbx-2
+#  - jruby-19mode
 
 script: "bundle exec rake test functional_test DEBUG_LOGS=true"
 sudo: false

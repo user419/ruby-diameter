@@ -135,10 +135,15 @@ module Diameter
       could_be_ip = ((@content.length == 6 && @content[0..1] == "\x00\x01") ||
                      (@content.length == 18 && @content[0..1] == "\x00\x02"))
 
+      too_small = @content.length <= 12
+
       maybe_grouped = !(has_all_ascii_values ||
                         could_be_64bit_num   ||
                         could_be_32bit_num   ||
-                        could_be_ip)
+                        could_be_ip)         &&
+                      !(too_small)
+      # Or can we not check against
+      #  Diameter::Internals::AVPNames.get("avp name")[1] != GroupedAVP ??
 
       s = vendor_specific? ? "AVP #{@code}, Vendor-ID #{@vendor_id}, mandatory: #{@mandatory}" :
               "AVP #{@code}, mandatory: #{@mandatory}"

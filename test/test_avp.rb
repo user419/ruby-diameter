@@ -180,4 +180,18 @@ describe 'AVP', 'A simple example' do
 
     avp.octet_string.length.must_equal 4
   end
+
+  it 'can create a PLMN AVP' do
+    test = "\x72\xf2\x67".force_encoding('ASCII-8BIT')
+    avp = AVP.create('Visited-PLMN-Id', test)
+    avp.code.must_equal 1407
+    avp.vendor_id.must_equal 10_415
+
+    # Check that to_s works and the string form includes the Vendor-ID
+    avp.to_s.must_include '10415'
+
+    # Wire representation taken from Wireshark
+    avp.to_wire.must_equal "\x00\x00\x05\x7f\xc0\x00\x00"\
+    "\x0f\x00\x00\x28\xaf\x72\xf2\x67\x00".force_encoding('ASCII-8BIT')
+  end
 end

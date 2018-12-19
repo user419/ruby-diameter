@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'diameter'
-  s.version     = '0.3.3'
+  s.version     = '0.3.4'
   s.licenses    = ['MIT']
   s.summary     = "Pure-Ruby Diameter stack"
   s.authors     = ["Rob Day"]

@@ -60,8 +60,8 @@ module Diameter
     # Diameter server instead of just a client).
     #
     # @param port [Fixnum] The TCP port to listen on (default 3868)
-    def listen_for_tcp(port=3868)
-      @tcp_helper.setup_new_listen_connection("0.0.0.0", port)
+    def listen_for_tcp(host="0.0.0.0", port=3868)
+      @tcp_helper.setup_new_listen_connection(host, port)
     end
 
     # Adds a handler for a specific Diameter application.

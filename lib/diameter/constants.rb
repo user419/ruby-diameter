@@ -22,13 +22,13 @@ module Diameter
       Integer64 = :Integer64
       Float32 = :Float32
       Float64 = :Float64
-      
+
       # Represents an AVP of OctetString type
       OctetString = :OctetString
       DiameterIdentity = OctetString
       DiameterURI = OctetString
       UTF8String = OctetString
-      
+      Time = OctetString
 
       # Represents an AVP of IPAddress type
       IPAddress = :Address
